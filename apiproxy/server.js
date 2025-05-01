@@ -5,12 +5,14 @@ var cors = require('cors');
 const app = express();
 
 // Proxy configuration
-app.use('/v1', createProxyMiddleware({
+const pathKey = "/alsdkfjqpolkxmckdjpai";
+const cc = '^/' + pathKey;
+app.use(pathKey, createProxyMiddleware({
   target: 'https://api.siliconflow.cn', // Change this to your target server
   onError: (err, req, res) => {
       res.status(500).send('Proxy error');
   },
-  //pathRewrite: {'^/api': ''},
+  pathRewrite: {cc: 'v1'},
   changeOrigin: true,
 }));
 
