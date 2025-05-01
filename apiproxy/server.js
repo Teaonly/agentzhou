@@ -9,7 +9,7 @@ app.use('/v1', createProxyMiddleware({
   target: 'https://api.siliconflow.cn', // Change this to your target server
   onError: (err, req, res) => {
       res.status(500).send('Proxy error');
-  }
+  },
   //pathRewrite: {'^/api': ''},
   changeOrigin: true,
 }));
